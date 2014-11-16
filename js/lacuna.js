@@ -866,11 +866,12 @@
 							faces = intersectedMesh.geometry.faces 
 
 							faces.forEach( function(triangle) {
-								console.log(triangle)
-									d1 = distance(vertices[triangle.a].x, vertices[triangle.a].y, vertices[triangle.a].z, vertices[triangle.b].x, vertices[triangle.b].y, vertices[triangle.b].z )
-									d2 = distance(vertices[triangle.b].x, vertices[triangle.b].y, vertices[triangle.b].z, vertices[triangle.c].x, vertices[triangle.c].y, vertices[triangle.c].z )
-									d3 = distance(vertices[triangle.c].x, vertices[triangle.c].y, vertices[triangle.c].z, vertices[triangle.a].x, vertices[triangle.a].y, vertices[triangle.a].z )
-								a += area(d1, d2, d3)
+								//console.log(triangle)
+								d1 = distance(vertices[triangle.a].x, vertices[triangle.a].y, vertices[triangle.a].z, vertices[triangle.b].x, vertices[triangle.b].y, vertices[triangle.b].z )
+								d2 = distance(vertices[triangle.b].x, vertices[triangle.b].y, vertices[triangle.b].z, vertices[triangle.c].x, vertices[triangle.c].y, vertices[triangle.c].z )
+								d3 = distance(vertices[triangle.c].x, vertices[triangle.c].y, vertices[triangle.c].z, vertices[triangle.a].x, vertices[triangle.a].y, vertices[triangle.a].z )
+								
+								a += get_area(d1, d2, d3)
 							});
 						
 							$("#dialogtext").text("Area: " + a + "meters squared");
