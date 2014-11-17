@@ -13,7 +13,8 @@ body {
 	height: 100%;
 	margin: 0px;
 	background-color: #080808;
-	font-family: Verdana;
+	font-size: 16px;
+	font-family: Calibri, Verdana, Arial ;
 	color: #ffffff;
 	}
 	
@@ -45,14 +46,18 @@ p.titles { font-size: 16px; font-weight: bold; width: 120px; display: inline-blo
 		min-height: 20%; max-height: 80%; overflow: hidden; background: #1B2024;}
 		
 #layers { position: absolute; height: 100%; width: 100%; max-width: 100%; min-width: 100%; 
-		min-height: 20%; overflow: hidden; background: #1B2024; 
-		font-size: 12px; text-indent: 15px;
+		min-height: 20%; overflow: hidden; background: #0F1010; 
+		font-size: 16px; text-indent: 15px;
 		} /* For scroll to work, must be positioned! (absolute works) */
+
+.layertext { cursor: help; }
 		
 #attributes {position: absolute; height: 50%; width: 100%;  max-width: 100%; min-width: 100%; overflow-y: auto; overflow-x: auto; 
-		min-height: 20%; max-height: 80%; overflow: hidden; background: #241B21;
+		min-height: 20%; max-height: 80%; overflow: hidden; background: #0D090B;
 		font-size: 12px; text-indent: 15px;}	
 		
+.allattributes { line-height: 0.5em !important; }
+
 #attributestop { padding-bottom: 15px; }
 
 .selected { background: #FFCC00 ; color: black; }
@@ -94,7 +99,7 @@ tr { background-color: rgb(36, 36, 36); border-color: black;border-width: 1px; }
 #axistoggle { line-height: 3 }
 
 #mode { 
-	position: absolute; right: 0; top: 0; width: 120px ; height: 47px ; line-height: 47px; text-align: center;
+	position: absolute; right: 0; top: 0; width: 120px ; height: 47px ; line-height: 47px; text-align: center; cursor: pointer;
 }
 									
 /* Increment dropdown menu positions in px accordingly! */
@@ -161,4 +166,8 @@ display: block-inline;
 	}
 .ui-dialog, .ui-dialog-content {
 	width: initial !important }
+	
+@media screen and (max-width: 1000px) {
+    #logo { visibility: hidden; }
+}
 	

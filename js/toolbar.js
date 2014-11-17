@@ -30,6 +30,7 @@
 
 
 		$('#topbar').tooltip({ position: { my: "center bottom", at: "right+10 top+5" }, hide: 100, show: 500 });
+		$('.layertext').tooltip({ position: { my: "center bottom", at: "right+10 top+5" }, hide: 100, show: 500 });
 			helperswitch = true;
 			axistoggle = true;
 			wireframetoggle = false;
@@ -88,8 +89,8 @@
 							if (document.getElementById("maxdist").value != "") {  controls.maxDistance = document.getElementById("maxdist").value }
 							if (document.getElementById("mindist").value != "") {  controls.minDistance = document.getElementById("mindist").value }
 							if (document.getElementById("rotatespeed").value != "") {  controls.rotateSpeed = document.getElementById("rotatespeed").value }
-							if (document.getElementById("zoomspeed").value != "") {  controls.rotateSpeed = document.getElementById("zoomspeed").value }
-							if (document.getElementById("panspeed").value != "") {  controls.rotateSpeed = document.getElementById("panspeed").value }
+							if (document.getElementById("zoomspeed").value != "") {  controls.zoomSpeed = document.getElementById("zoomspeed").value }
+							if (document.getElementById("panspeed").value != "") {  controls.panSpeed = document.getElementById("panspeed").value }
 						},
 						Cancel: function () {
 							$(this).dialog("close");

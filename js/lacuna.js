@@ -77,6 +77,12 @@
 			}
 		}
 		
+		function getLayerColour (layername) { 
+			l = layername.replace('"', '')
+			l = l.replace('"', '')
+			return $("#" + l + "col").css("background-color") 
+		}
+
 		
 		// Get Centroid First
 		$.ajax({
@@ -102,11 +108,6 @@
 			init();
 			animate();
 			
-			function getLayerColour (layername) { 
-					l = layername.replace('"', '')
-					l = l.replace('"', '')
-					return $("#" + l + "col").css("background-color") 
-				}
 			
 			function init() {
 			
@@ -287,7 +288,7 @@
 									else {
 										// The triangulator doesn't appear to take into account the fact that some points may share X Y coordinates, to overcome this we add an epsilon
 										// so Three.js thinks they're different coordinates
-										console.log(part);
+										//console.log(part);
 										part.forEach(function(coord, i) {
 											if ($.inArray(parseFloat(coord), epsilonCheck) != -1) {
 												part[i] = parseFloat(coord) + EPSILON 
@@ -344,6 +345,7 @@
 						//console.log(aLayer[0][0], aLayer[0][1]);
 						var ids = aLayer[0][2]
 						var id = 0
+						var modelVertices = []
 						
 						//ranCol = getRandomColor();
 						aLayerArray.forEach( function(aFeature) {

@@ -4,7 +4,10 @@
 		<title>Lacuna - 3D Web GIS using HTML5</title>
 		<meta charset="utf-8">
 		
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="css/Lacuna.css">
+		<link rel="stylesheet" href="css/perfect-scrollbar-0.4.10.min.css">
+		<link rel='stylesheet' href='css/spectrum.css' />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 		<!-- <script src="poly2tri.js"></script> -->
 		<script src="js/three67.js"></script>
 		<script src="js/TrackballControls.js"></script>
@@ -15,25 +18,6 @@
 		<script src='js/spectrum.js'></script>
 		<script src='js/getrandomcolor.js'></script>
 		<!-- <script src='js/pnltri.min.js'></script> -->
-	
-		<link rel="stylesheet" href="css/perfect-scrollbar-0.4.10.min.css">
-		<link rel='stylesheet' href='css/spectrum.css' />
-		<link rel="stylesheet" href="css/Lacuna.css">
-
-		
-		<script> 
-			
-			$(document).ready(function() {	
-				$(document).bind("contextmenu",function(e){ 
-					console.log(e.target.nodeName) 
-					console.log($(e.target.id).closest(".attributetables").length > 0)
-					if ((e.target.nodeName == "TR" ) || (e.target.nodeName == "TH" ) || (e.target.nodeName == "TABLE" ) || (e.target.nodeName == "TD" ) || (e.target.nodeName == "CAPTION" )) { return true } 
-					else { return false } 
-				}); <!-- DISABLE CONTEXT MENU -->
-					
-			}); 
-				 
-		</script>
 		<?php include 'ajax/dbconnect.php'; ?>
 		
 	</head>
@@ -106,11 +90,14 @@
 											$divCol = $layer[0] . "col";
 											$divZoom = $layer[0] . "zoom";
 											$divAtt = $layer[0] . "attributes";
+											
+											if ( strlen($layer[0]) > 15 )  { $layerAlias = substr($layer[0] , 0, 14) . "...";	}
+											else { $layerAlias = $layer[0]; } 
 											echo "<br>";
 											echo "<input type='checkbox' id='$layer[0]' style='vertical-align: middle; float:left; width:45px' />";
-											echo "$layer[0] <div id='$divCol' title='Layer Colour' style='width: 11px; height:11px; display: inline-block; margin-left: 5px; border: black; border-style: solid; vertical-align: middle; margin-bottom: 2px; cursor: pointer' /> </div>";
+											echo "<span title='$layer[0]' class='layertext'> $layerAlias </span> <div id='$divCol' title='Layer Colour' style='width: 11px; height:11px; display: inline-block; margin-left: 5px; border: black; border-style: solid; vertical-align: middle; margin-bottom: 2px; cursor: pointer' /> </div>";
 											echo "<div id='$divZoom' title='Zoom to Layer' style='width: 11px; height:11px; display: inline-block; margin-left: 5px; border: black; border-style: solid; vertical-align: middle; margin-bottom: 2px; cursor: pointer' /><img src='imgs/zoom.png' style='float: left'> </div>";
-											echo "<div id='$divAtt' title='Attributes' style=' background-color: #080808; width: 11px; height:11px; display: inline-block; margin-left: 5px; border: black; border-style: solid; vertical-align: middle; margin-bottom: 2px; cursor: pointer; line-height: 1em; text-align: center; text-indent:0px;' />a</div>";
+											echo "<div class='allattributes' title='Attributes' style=' background-color: #080808; width: 11px; height:11px; display: inline-block; margin-left: 5px; border: black; border-style: solid; vertical-align: middle; margin-bottom: 2px; cursor: pointer; line-height: 1em; text-align: center; text-indent:0px;' />a</div>";
 											array_push($layerList, $layer[0]);
 											echo "<br>";
 										}
@@ -142,10 +129,18 @@
 		<div id="select-marquee"></div>
 		<div id="dialog"><div id="dialogtext"></div></div>
 		
-		<script> 
-			$( "#loadselected" ).button( {label: "Get Selected", text: true} );
-			$('#layers').perfectScrollbar({suppressScrollX: true, scrollYMarginOffset: 3});
-			$('#attributes').perfectScrollbar({scrollXMarginOffset: 10});
+		<script>
+			$(document).ready(function() {	
+				$(document).bind("contextmenu",function(e){ 
+					console.log(e.target.nodeName) 
+					console.log($(e.target.id).closest(".attributetables").length > 0)
+					if ((e.target.nodeName == "TR" ) || (e.target.nodeName == "TH" ) || (e.target.nodeName == "TABLE" ) || (e.target.nodeName == "TD" ) || (e.target.nodeName == "CAPTION" )) { return true } 
+					else { return false } 
+				}); <!-- DISABLE CONTEXT MENU -->
+				$( "#loadselected" ).button( {label: "Get Selected", text: true} );
+				$('#layers').perfectScrollbar({suppressScrollX: true, scrollYMarginOffset: 3});
+				$('#attributes').perfectScrollbar({scrollXMarginOffset: 10});
+			}); 
 		</script>
 		<script src="js/lacuna.js"></script>
 		<script src="js/toolbar.js"></script>
