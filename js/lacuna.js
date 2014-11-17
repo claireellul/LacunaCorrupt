@@ -244,7 +244,7 @@
 						aLayerFormatted = aLayer[1][1].slice(0, - 5); //  Remove final %%%
 						var aLayerArray = aLayerFormatted.split(" %%% ");
 						var ids = aLayer[1][2]
-
+						var modelVertices = [];
 						var id = 0
 						//console.log(aLayerArray.length, ids.length);
 						aLayerArray.forEach( function(aFeature) {
@@ -279,7 +279,7 @@
 								var uniqueVertices = [];
 								var epsilonCheck = [];
 								//console.log(modelVertices.length)
-								modelVertices.reverse();
+								//modelVertices.reverse();
 								
 								modelVertices.forEach(function(part, index, theVertices) {
 									//console.log(part);
@@ -287,6 +287,7 @@
 									else {
 										// The triangulator doesn't appear to take into account the fact that some points may share X Y coordinates, to overcome this we add an epsilon
 										// so Three.js thinks they're different coordinates
+										console.log(part);
 										part.forEach(function(coord, i) {
 											if ($.inArray(parseFloat(coord), epsilonCheck) != -1) {
 												part[i] = parseFloat(coord) + EPSILON 

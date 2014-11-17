@@ -14,7 +14,7 @@
 		<script src="js/perfect-scrollbar-0.4.10.with-mousewheel.min.js"></script>
 		<script src='js/spectrum.js'></script>
 		<script src='js/getrandomcolor.js'></script>
-		<script src='js/pnltri.min.js'></script>
+		<!-- <script src='js/pnltri.min.js'></script> -->
 	
 		<link rel="stylesheet" href="css/perfect-scrollbar-0.4.10.min.css">
 		<link rel='stylesheet' href='css/spectrum.css' />
@@ -35,23 +35,10 @@
 				 
 		</script>
 		<?php include 'ajax/dbconnect.php'; ?>
-		<?php include 'ajax/dbconnect.php'; ?>
 		
 	</head>
 
 	<body>
-	
-		<script>
-			 console.log("Using PNLTRI");
- 			THREE.Shape.Utils.triangulateShape = ( function () {
- 				 var pnlTriangulator = new PNLTRI.Triangulator();
- 				 return function ( contour, holes ) {
- 					 console.log("new Triangulation: PnlTri.js " + PNLTRI.REVISION );
- 				 return pnlTriangulator.triangulate_polygon( [ contour ].concat(holes) );
- 				 };
- 			 } )();
- 		</script>
-			
 		<div id="topbar"> 
 			<div id="logoholder"> 
 				<img id="logo" src="imgs/LacunaLogo2.png"></img>
@@ -137,16 +124,10 @@
 					<div id="attributes"> 
 						<div id="attributestop">
 							<p class="titles"> Attributes </p>  <div id="loadselected"> </div>
-					
 						</div>
-						 <script> $( "#loadselected" ).button( {label: "Get Selected", text: true} ); </script>
 						 <div id="attributesholder"> </div>
 					</div>
 				</div>
-					<script> 
-						$('#layers').perfectScrollbar({suppressScrollX: true, scrollYMarginOffset: 3});
-						$('#attributes').perfectScrollbar({scrollXMarginOffset: 10});
-					</script>
 				<div id="container">
 				</div>
 		</div>
@@ -161,6 +142,11 @@
 		<div id="select-marquee"></div>
 		<div id="dialog"><div id="dialogtext"></div></div>
 		
+		<script> 
+			$( "#loadselected" ).button( {label: "Get Selected", text: true} );
+			$('#layers').perfectScrollbar({suppressScrollX: true, scrollYMarginOffset: 3});
+			$('#attributes').perfectScrollbar({scrollXMarginOffset: 10});
+		</script>
 		<script src="js/lacuna.js"></script>
 		<script src="js/toolbar.js"></script>
 		<script src="js/layersattributes.js"></script> <!-- Page needs to have loaded first to run this script successfully! KEEP AT THE END -->
