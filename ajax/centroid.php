@@ -6,7 +6,10 @@
 	$maxy = 0;
 	$minx = 0;
 	$miny = 0;
-	$result = pg_query($db, "SELECT table_name FROM information_schema.tables  WHERE table_schema = 'public'");
+	//$result = pg_query($db, "SELECT table_name FROM information_schema.tables  WHERE table_schema = 'public'");
+
+	// claire ellul - change so that we can work with multiple projects
+	$result= pg_query($db,"SELECT tableName FROM projectMetadata  WHERE projectName = 'cege' ORDER BY tableName ASC");
 	while ($layer = pg_fetch_row($result)) {
 			$thegeom = '"' . $layer[0] . '"';
 			$extentquery = "SELECT ST_XMax(ST_Extent(geom)), ST_YMax(ST_Extent(geom)), ST_XMin(ST_Extent(geom)), ST_YMin(ST_Extent(geom)) FROM $thegeom ;";
@@ -19,8 +22,8 @@
 					if ($geoms[2] < $minx or $minx == 0 ) { $minx = $geoms[2]; }
 					if ($geoms[3] < $miny or $miny == 0) { $miny = $geoms[3]; }
 			}
-		}	
+		}
 	$centroid = array($maxx, $maxy, $minx, $miny);
 	echo json_encode($centroid);
-	
+
 ?>

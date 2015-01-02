@@ -1,7 +1,7 @@
 <?php
-   $host        = "host=127.0.0.1";
-   $port        = "port=1432";
-   $dbname      = "dbname=jamesmilner";
-   $credentials = "user=user13 password=user13password";
+   $host        = "host=localhost";
+   $port        = "port=5432";
+   $dbname      = "dbname=threed";
+   $credentials = "user=postgres password=postgres";
    $db = pg_connect( "$host $port $dbname $credentials"  );
 ?>
